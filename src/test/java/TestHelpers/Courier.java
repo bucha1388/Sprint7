@@ -1,3 +1,5 @@
+package TestHelpers;
+
 public class Courier {
 
     public Courier(String login, String password) {

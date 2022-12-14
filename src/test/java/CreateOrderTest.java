@@ -1,7 +1,9 @@
+import TestHelpers.ClientOrder;
+import TestHelpers.Hands;
+import TestHelpers.NewOrder;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,6 +37,9 @@ public class CreateOrderTest {
         this.color = color;
     }
 
+    Hands hand = new Hands();
+    ClientOrder order = new ClientOrder();
+
     @Parameterized.Parameters(name = "Выбор цвета: {7}")
     public static Object[][] getCredentials() {
         return new Object[][] {
@@ -54,18 +59,7 @@ public class CreateOrderTest {
     @DisplayName("Parameterize tests for create orders")
     @Description("Параметризированный тест для создания заказов с разными вариантами параметра цвета самоката")
     public void createOrderPositiveTest(){
-        NewOrder newOrder = new NewOrder(firstName, lastName, address, metroStation, phone, rentTime, deliveryDate, comment, color);
-        Response response =
-                given()
-                        .header("Content-type", "application/json")
-                        .auth().oauth2("")
-                        .and()
-                        .body(newOrder)
-                        .when()
-                        .post("/api/v1/orders");
-//        System.out.println(response.asString());
-
-        response
+        order.createOrder(new NewOrder(firstName, lastName, address, metroStation, phone, rentTime, deliveryDate, comment, color))
                 .then().assertThat().body("track", notNullValue())
                 .and()
                 .statusCode(201);

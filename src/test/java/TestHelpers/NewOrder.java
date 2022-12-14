@@ -1,3 +1,5 @@
+package TestHelpers;
+
 public class NewOrder {
     private String firstName;
     private String lastName;

@@ -1,4 +1,11 @@
+package TestHelpers;
+
 public class NewCourier {
+
+    private String login;
+    private String password;
+    private String firstName;
+
 
     public NewCourier(String login, String password, String firstName) {
         this.login = login;
@@ -29,9 +36,5 @@ public class NewCourier {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-    private String login;
-    private String password;
-    private String firstName;
 
 }

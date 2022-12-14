@@ -1,4 +1,8 @@
+package TestHelpers;
+
 public class CourierResponse {
+
+    private String id;
     public CourierResponse(String id) {
         this.id = id;
     }
@@ -10,6 +14,4 @@ public class CourierResponse {
     public void setId(String id) {
         this.id = id;
     }
-
-    private String id;
 }
