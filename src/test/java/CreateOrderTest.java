@@ -1,6 +1,6 @@
-import TestHelpers.ClientOrder;
-import TestHelpers.Hands;
-import TestHelpers.NewOrder;
+import testhelpers.ClientOrder;
+import testhelpers.Endpoints;
+import testhelpers.NewOrder;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
@@ -37,7 +37,7 @@ public class CreateOrderTest {
         this.color = color;
     }
 
-    Hands hand = new Hands();
+    Endpoints hand = new Endpoints();
     ClientOrder order = new ClientOrder();
 
     @Parameterized.Parameters(name = "Выбор цвета: {7}")

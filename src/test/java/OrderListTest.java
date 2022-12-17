@@ -1,5 +1,5 @@
-import TestHelpers.ClientOrder;
-import TestHelpers.Hands;
+import testhelpers.ClientOrder;
+import testhelpers.Endpoints;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
@@ -11,12 +11,12 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class OrderListTest {
 
-    Hands hand = new Hands();
+    Endpoints endPoint = new Endpoints();
     ClientOrder orders = new ClientOrder();
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = hand.getBase();
+        RestAssured.baseURI = endPoint.BASE;
    }
 
 

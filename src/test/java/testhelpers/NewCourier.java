@@ -1,4 +1,4 @@
-package TestHelpers;
+package testhelpers;
 
 public class NewCourier {
 
