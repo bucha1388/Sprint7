@@ -8,15 +8,16 @@ import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
+import static testhelpers.Endpoints.BASE;
 
 public class OrderListTest {
 
-    Endpoints endPoint = new Endpoints();
+
     ClientOrder orders = new ClientOrder();
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = endPoint.BASE;
+        RestAssured.baseURI = BASE;
    }
 
 

@@ -8,9 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
+import static testhelpers.Endpoints.BASE;
 
 @RunWith(Parameterized.class)
 public class CreateOrderTest {
@@ -37,8 +36,7 @@ public class CreateOrderTest {
         this.color = color;
     }
 
-    Endpoints hand = new Endpoints();
-    ClientOrder order = new ClientOrder();
+      ClientOrder order = new ClientOrder();
 
     @Parameterized.Parameters(name = "Выбор цвета: {7}")
     public static Object[][] getCredentials() {
@@ -52,7 +50,7 @@ public class CreateOrderTest {
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = "http://qa-scooter.praktikum-services.ru";
+        RestAssured.baseURI = BASE;
     }
 
     @Test

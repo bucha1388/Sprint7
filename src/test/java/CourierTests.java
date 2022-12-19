@@ -9,22 +9,23 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.hamcrest.Matchers.*;
+import static testhelpers.Endpoints.BASE;
+import static testhelpers.TestsData.*;
 
 
 public class CourierTests {
 
-   Endpoints endPoint = new Endpoints();
+
    ClientCourier clientCourier = new ClientCourier();
-   TestsData data = new TestsData();
-   NewCourier newCourier = new NewCourier(data.LOGIN, data.PASSWORD, data.FIRST_NAME);
-    NewCourier newCourierWithoutLogin = new NewCourier("", data.PASSWORD, data.FIRST_NAME);
-    NewCourier newCourierWithoutPass = new NewCourier(data.LOGIN, "", data.FIRST_NAME);
-    NewCourier newCourierWithoutFirstName = new NewCourier(data.LOGIN, data.PASSWORD,null);
+      NewCourier newCourier = new NewCourier(LOGIN, PASSWORD, FIRST_NAME);
+    NewCourier newCourierWithoutLogin = new NewCourier("", PASSWORD, FIRST_NAME);
+    NewCourier newCourierWithoutPass = new NewCourier(LOGIN, "", FIRST_NAME);
+    NewCourier newCourierWithoutFirstName = new NewCourier(LOGIN, PASSWORD,null);
 
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = endPoint.BASE;
+        RestAssured.baseURI = BASE;
     }
 
     @Test
@@ -53,7 +54,7 @@ public class CourierTests {
     @DisplayName("Check error when create courier without login")
     @Description("Проверка, что при попытке создания курьера без указания логина , курьер не создается, статус 400 и нужное сообщение об ошибке")
     public void createNewCourierWithoutLoginTest(){
-        NewCourier newCourier = new NewCourier("", data.PASSWORD, data.FIRST_NAME);
+        NewCourier newCourier = new NewCourier("", PASSWORD, FIRST_NAME);
         clientCourier.createCourier(newCourier)
                 .then().assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"))
                 .and()
@@ -64,7 +65,7 @@ public class CourierTests {
     @DisplayName("Check error when create courier without password")
     @Description("Проверка, что при попытке создания курьера без указания пароля , курьер не создается, статус 400 и нужное сообщение об ошибке")
     public void createNewCourierWithoutPasswordTest(){
-        NewCourier newCourier = new NewCourier(data.LOGIN, "", data.FIRST_NAME);
+        NewCourier newCourier = new NewCourier(LOGIN, "", FIRST_NAME);
                 clientCourier.createCourier(newCourier)
                 .then().assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"))
                 .and()
@@ -75,7 +76,7 @@ public class CourierTests {
     @DisplayName("Check error when create courier without firstName")
     @Description("Проверка, что при попытке создания курьера без указания имени, курьер не создается, статус 400 и нужное сообщение об ошибке. Надо учитывать что требований по этому полю НЕТ!")
     public void createNewCourierWithoutFirstNameTest(){
-        NewCourier newCourier = new NewCourier(data.LOGIN, data.PASSWORD,null);
+        NewCourier newCourier = new NewCourier(LOGIN, PASSWORD,null);
         clientCourier.createCourier(newCourier)
                 .then().assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"))
                 .and()
