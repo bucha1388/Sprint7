@@ -3,10 +3,10 @@ package testhelpers;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
+import static testhelpers.Endpoints.API_ORDERS;
 
 public class ClientOrder {
 
-    Endpoints endPoint = new Endpoints();
 
     public Response getOrderList() {
         Response response =
@@ -16,7 +16,7 @@ public class ClientOrder {
                         .and()
                         .body("")
                         .when()
-                        .get(endPoint.API_ORDERS);
+                        .get(API_ORDERS);
         return response;
     }
 
@@ -28,7 +28,7 @@ public class ClientOrder {
                         .and()
                         .body(newOrder)
                         .when()
-                        .post(endPoint.API_ORDERS);
+                        .post(API_ORDERS);
         return response;
 //        System.out.println(response.asString());
 

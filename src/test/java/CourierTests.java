@@ -1,7 +1,5 @@
 import testhelpers.ClientCourier;
-import testhelpers.Endpoints;
 import testhelpers.NewCourier;
-import testhelpers.TestsData;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
@@ -17,7 +15,7 @@ public class CourierTests {
 
 
    ClientCourier clientCourier = new ClientCourier();
-      NewCourier newCourier = new NewCourier(LOGIN, PASSWORD, FIRST_NAME);
+    NewCourier newCourier = new NewCourier(LOGIN, PASSWORD, FIRST_NAME);
     NewCourier newCourierWithoutLogin = new NewCourier("", PASSWORD, FIRST_NAME);
     NewCourier newCourierWithoutPass = new NewCourier(LOGIN, "", FIRST_NAME);
     NewCourier newCourierWithoutFirstName = new NewCourier(LOGIN, PASSWORD,null);

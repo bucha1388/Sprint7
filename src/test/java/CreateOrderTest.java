@@ -1,5 +1,4 @@
 import testhelpers.ClientOrder;
-import testhelpers.Endpoints;
 import testhelpers.NewOrder;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;

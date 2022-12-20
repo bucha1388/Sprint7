@@ -2,9 +2,11 @@ package testhelpers;
 
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
+import static testhelpers.Endpoints.API_CREATE;
+import static testhelpers.Endpoints.API_LOGIN;
 
 public class ClientCourier {
-    Endpoints endPoint = new Endpoints();
+
 
     public Response createCourier(NewCourier newCourier) {
 
@@ -15,7 +17,7 @@ public class ClientCourier {
                         .and()
                         .body(newCourier)
                         .when()
-                        .post(endPoint.API_CREATE);
+                        .post(API_CREATE);
 
         return response;
 
@@ -31,7 +33,7 @@ public class ClientCourier {
                         .and()
                         .body(newCourier)
                         .when()
-                        .post(endPoint.API_LOGIN);
+                        .post(API_LOGIN);
 
         return response;
 
@@ -45,7 +47,7 @@ public class ClientCourier {
                         .and()
                         .body(newCourier)
                         .when()
-                        .post(endPoint.API_LOGIN)
+                        .post(API_LOGIN)
                         .body()
                         .as(CourierResponse.class);
 
@@ -53,8 +55,7 @@ public class ClientCourier {
 
                 given()
                 .auth().oauth2("")
-                .delete( endPoint.API_CREATE + "/" + courierResponse.getId());
-
+                .delete( API_CREATE + "/" + courierResponse.getId());
 
     }
 }

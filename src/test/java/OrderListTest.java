@@ -1,12 +1,9 @@
 import testhelpers.ClientOrder;
-import testhelpers.Endpoints;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import org.junit.Before;
 import org.junit.Test;
-
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 import static testhelpers.Endpoints.BASE;
 
