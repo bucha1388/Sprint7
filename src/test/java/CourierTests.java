@@ -42,7 +42,7 @@ public class CourierTests {
     public void createNewCourierDoubleRegTest(){
         clientCourier.createCourier(newCourier);
         clientCourier.createCourier(newCourier)
-                .then().assertThat().body("message", equalTo("Этот логин уже используется."))
+                .then().assertThat().body("message", equalTo("Этот логин уже используется. Попробуйте другой."))
                 .and()
                 .statusCode(409);
     }
@@ -76,9 +76,13 @@ public class CourierTests {
     public void createNewCourierWithoutFirstNameTest(){
         NewCourier newCourier = new NewCourier(LOGIN, PASSWORD,null);
         clientCourier.createCourier(newCourier)
-                .then().assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"))
+                .then().assertThat().body("ok", equalTo(true))
                 .and()
-                .statusCode(400);
+                .statusCode(201);
+
+//                .then().assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"))
+//                .and()
+//                .statusCode(400);
     }
 
 

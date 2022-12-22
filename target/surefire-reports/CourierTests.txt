@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: CourierTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 1.425 s <<< FAILURE! - in CourierTests
+createNewCourierWithoutFirstNameTest(CourierTests)  Time elapsed: 0.254 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+JSON path message doesn't match.
+Expected: Ќедостаточно данных дл€ создани€ учетной записи
+  Actual: null
+
+	at CourierTests.createNewCourierWithoutFirstNameTest(CourierTests.java:79)
+
+createNewCourierDoubleRegTest(CourierTests)  Time elapsed: 0.351 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+JSON path message doesn't match.
+Expected: Ётот логин уже используетс€.
+  Actual: Ётот логин уже используетс€. ѕопробуйте другой.
+
+	at CourierTests.createNewCourierDoubleRegTest(CourierTests.java:45)
+
